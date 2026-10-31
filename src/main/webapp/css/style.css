@@ -1,0 +1,240 @@
+/* =========================================================
+   CodeQuest - common stylesheet (dark gaming theme)
+   Used by every page for consistent colours, fonts,
+   buttons, forms, tables and layout.
+   ========================================================= */
+
+:root {
+    --bg: #0b0f1a;
+    --bg-panel: #131a2a;
+    --bg-input: #0f1522;
+    --border: #24304a;
+    --text: #e6ebf5;
+    --muted: #8b97b0;
+    --primary: #ffd65c;      /* purple neon */
+    --primary-dark: #3fd8e0;
+    --accent: #00e0b8;       /* teal neon */
+    --gold: #ffcc33;
+    --silver: #c9d1dc;
+    --bronze: #e08a4a;
+    --danger: #ff5c7a;
+    --success: #2ee59d;
+    --radius: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1440 0%, var(--bg) 55%) fixed;
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3 { font-family: "Consolas", "Courier New", monospace; letter-spacing: 0.5px; }
+h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
+h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+
+/* ---------- Navigation bar ---------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px 32px;
+    background: rgba(10, 14, 26, 0.92);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.navbar .brand {
+    font-family: "Consolas", monospace;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--text);
+}
+.navbar .brand span { color: var(--primary); }
+.navbar nav { display: flex; flex-wrap: wrap; gap: 6px; }
+.navbar nav a {
+    color: var(--muted);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.navbar nav a:hover { color: var(--text); background: var(--bg-panel); text-decoration: none; }
+.navbar nav a.nav-btn { color: #fff; background: var(--primary); }
+.navbar nav a.nav-btn:hover { background: var(--primary-dark); }
+
+/* ---------- Layout ---------- */
+.container { max-width: 1100px; margin: 32px auto; padding: 0 20px; }
+.container.narrow { max-width: 480px; }
+
+.card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.mt { margin-top: 16px; }
+
+/* ---------- Hero (home page) ---------- */
+.hero { text-align: center; padding: 70px 20px 40px; }
+.hero h1 { font-size: 2.8rem; }
+.hero h1 span { color: var(--primary); text-shadow: 0 0 18px rgba(124, 92, 255, 0.7); }
+.hero p { color: var(--muted); max-width: 680px; margin: 12px auto 28px; font-size: 1.1rem; }
+
+.feature { text-align: center; }
+.feature .icon { font-size: 2.2rem; margin-bottom: 8px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.2s;
+}
+.btn:hover { background: var(--primary-dark); text-decoration: none; transform: translateY(-1px); }
+.btn.secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+.btn.secondary:hover { background: rgba(0, 224, 184, 0.1); }
+.btn.block { width: 100%; }
+.btn:disabled { background: #333a4d; cursor: not-allowed; transform: none; }
+
+/* ---------- Forms ---------- */
+.form-group { margin-bottom: 16px; }
+label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 0.92rem; }
+input[type=text], input[type=email], input[type=password], input[type=number],
+select, textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
+}
+textarea { min-height: 100px; resize: vertical; }
+.checkbox { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.checkbox input { width: auto; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* ---------- Messages ---------- */
+.alert { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 0.95rem; }
+.alert.error { background: rgba(255, 92, 122, 0.12); border: 1px solid var(--danger); color: #ffb3c1; }
+.alert.success { background: rgba(46, 229, 157, 0.12); border: 1px solid var(--success); color: #a9f5d4; }
+.alert.info { background: rgba(124, 92, 255, 0.12); border: 1px solid var(--primary); color: #cfc4ff; }
+
+/* ---------- Tables ---------- */
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+tr:hover td { background: rgba(124, 92, 255, 0.06); }
+tr.me td { background: rgba(0, 224, 184, 0.08); }
+
+/* ---------- Badges ---------- */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+}
+.badge.Easy   { color: var(--success); border-color: var(--success); }
+.badge.Medium { color: var(--gold);    border-color: var(--gold); }
+.badge.Hard   { color: var(--danger);  border-color: var(--danger); }
+.badge.cat    { color: var(--primary); border-color: var(--primary); }
+.badge.xp     { color: var(--accent);  border-color: var(--accent); }
+.badge.done   { color: var(--success); border-color: var(--success); }
+.badge.fail   { color: var(--danger);  border-color: var(--danger); }
+
+/* ---------- Stats / progress (dashboard) ---------- */
+.stat { text-align: center; }
+.stat .value { font-size: 2.2rem; font-weight: bold; color: var(--primary); font-family: "Consolas", monospace; }
+.stat .label { color: var(--muted); font-size: 0.9rem; }
+
+.progress { background: var(--bg-input); border: 1px solid var(--border); border-radius: 20px; height: 22px; overflow: hidden; }
+.progress .bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    box-shadow: 0 0 12px rgba(0, 224, 184, 0.6);
+}
+
+/* ---------- Missions ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; align-items: center; }
+.filters a {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.filters a.active, .filters a:hover { border-color: var(--primary); color: var(--text); text-decoration: none; }
+.category-title { margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--primary); }
+.mission .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.mission .desc { color: var(--muted); margin-bottom: 14px; white-space: pre-wrap; }
+.option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text);
+}
+.option:hover { border-color: var(--primary); }
+.option input { width: auto; }
+
+/* ---------- Leaderboard ---------- */
+.rank { font-weight: bold; font-size: 1.1rem; }
+.rank-1 td { background: rgba(255, 204, 51, 0.10); }
+.rank-2 td { background: rgba(201, 209, 220, 0.08); }
+.rank-3 td { background: rgba(224, 138, 74, 0.08); }
+.rank-1 .rank { color: var(--gold); }
+.rank-2 .rank { color: var(--silver); }
+.rank-3 .rank { color: var(--bronze); }
+
+/* ---------- Result page ---------- */
+.result-icon { font-size: 4rem; }
+.result-correct h1 { color: var(--success); }
+.result-wrong h1 { color: var(--danger); }
+
+/* ---------- Footer ---------- */
+footer { text-align: center; color: var(--muted); padding: 30px 10px; font-size: 0.85rem; }
+
+@media (max-width: 640px) {
+    .navbar { padding: 12px 16px; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+}
